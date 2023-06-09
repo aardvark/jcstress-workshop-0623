@@ -3,15 +3,17 @@ package org.example;
 import org.openjdk.jcstress.annotations.Actor;
 import org.openjdk.jcstress.annotations.Arbiter;
 import org.openjdk.jcstress.annotations.Expect;
+import org.openjdk.jcstress.annotations.JCStressMeta;
 import org.openjdk.jcstress.annotations.JCStressTest;
 import org.openjdk.jcstress.annotations.Outcome;
 import org.openjdk.jcstress.annotations.State;
 import org.openjdk.jcstress.infra.results.III_Result;
 
-@JCStressTest
-@Outcome(id = "3, 5, 8", expect = Expect.ACCEPTABLE, desc = "Expected result.")
-@State
+@Outcome(id = "\\d, \\d, 8", expect = Expect.ACCEPTABLE, desc = "Expected result.")
 public class Lab2_1_Nest {
+  @JCStressTest
+  @JCStressMeta(Lab2_1_Nest.class)
+  @State
   public static class AlsoNotCorrect {
     public volatile int v = 0;
 
@@ -33,6 +35,9 @@ public class Lab2_1_Nest {
     }
   }
 
+  @JCStressTest
+  @JCStressMeta(Lab2_1_Nest.class)
+  @State
   public static class NotCorrect {
 
     public int v = 0;

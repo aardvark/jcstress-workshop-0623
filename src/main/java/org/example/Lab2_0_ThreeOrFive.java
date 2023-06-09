@@ -7,12 +7,11 @@ import org.openjdk.jcstress.annotations.JCStressTest;
 import org.openjdk.jcstress.annotations.Outcome;
 import org.openjdk.jcstress.annotations.State;
 import org.openjdk.jcstress.infra.results.III_Result;
-import org.openjdk.jcstress.infra.results.II_Result;
 
 @JCStressTest
 @Outcome(id = "3, 5, 8", expect = Expect.ACCEPTABLE, desc = "Expected result.")
 @State
-public class Lab2ThreeOrFive {
+public class Lab2_0_ThreeOrFive {
 
   public volatile int v = 0;
 
