@@ -9,12 +9,14 @@ import org.openjdk.jcstress.annotations.Outcome;
 import org.openjdk.jcstress.annotations.State;
 import org.openjdk.jcstress.infra.results.III_Result;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 @Outcome(id = "\\d, \\d, 8", expect = Expect.ACCEPTABLE, desc = "Expected result.")
-public class Lab2_1_Nest {
+public class Lab3_Nest {
   @JCStressTest
-  @JCStressMeta(Lab2_1_Nest.class)
+  @JCStressMeta(Lab3_Nest.class)
   @State
-  public static class AlsoNotCorrect {
+  public static class Use_Volatile {
     public volatile int v = 0;
 
     @Actor
@@ -36,31 +38,25 @@ public class Lab2_1_Nest {
   }
 
   @JCStressTest
-  @JCStressMeta(Lab2_1_Nest.class)
+  @JCStressMeta(Lab3_Nest.class)
   @State
-  public static class NotCorrect {
+  public static class Use_Atomic {
 
-    public int v = 0;
+    public AtomicInteger v = new AtomicInteger(0);
 
     @Actor
     public void actor1(III_Result r) {
-      synchronized (this) {
-        v = v + 3;
-        r.r1 = v;
-      }
+      r.r1 = v.addAndGet(3);
     }
 
     @Actor
     public void actor2(III_Result r) {
-      synchronized (this) {
-        v = v + 5;
-        r.r2 = v;
-      }
+      r.r2 = v.addAndGet(5);
     }
 
     @Arbiter
     public void arbiter(III_Result r) {
-      r.r3 = v;
+      r.r3 = v.get();
     }
   }
 }

@@ -11,9 +11,9 @@ import org.openjdk.jcstress.infra.results.III_Result;
 @JCStressTest
 @Outcome(id = "3, 5, 8", expect = Expect.ACCEPTABLE, desc = "Expected result.")
 @State
-public class Lab2_0_ThreeOrFive {
+public class Lab2_WorldOfSurprises {
 
-  public volatile int v = 0;
+  public int v = 0;
 
   @Actor
   public void actor1(III_Result r) {

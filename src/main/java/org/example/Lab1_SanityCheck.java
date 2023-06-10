@@ -39,7 +39,7 @@ import org.openjdk.jcstress.infra.results.II_Result;
 // Outline the outcomes here. The default outcome is provided, you need to remove it:
 @Outcome(id = "0, 0", expect = Expect.ACCEPTABLE, desc = "Default outcome.")
 @State
-public class Lab1Annotations {
+public class Lab1_SanityCheck {
 
     @Actor
     public void actor1(II_Result r) {
